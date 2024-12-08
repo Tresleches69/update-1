@@ -14,91 +14,92 @@
         }
 
         /* Header Styles */
-    header {
-    background: black;
-    padding: 1rem;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-}
+        header {
+            background: black;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
 
-nav {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 2rem;
-}
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
 
-.nav-links {
-    display: flex;
-    gap: 3rem;
-    align-items: center;
-}
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
 
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s;
-    font-size: 0.9rem;
-    letter-spacing: 2px;
-    font-weight: 500;
-    position: relative;
-}
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            font-weight: 500;
+            position: relative;
+        }
 
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    background: #ffd700;
-    left: 0;
-    bottom: -4px;
-    transition: width 0.3s ease;
-}
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #ffd700;
+            left: 0;
+            bottom: -4px;
+            transition: width 0.3s ease;
+        }
 
-.nav-links a:hover::after {
-    width: 100%;
-}
+        .nav-links a:hover::after {
+            width: 100%;
+        }
 
-.logo {
-    padding: 0 2rem;
-}
+        .logo {
+            padding: 0 2rem;
+        }
 
-.logo img {
-    height: 100px;
-    width: auto;
-}
+        .logo img {
+            height: 100px;
+            width: auto;
+        }
 
-.left-links {
-    flex: 1;
-    justify-content: flex-end;
-}
+        .left-links {
+            flex: 1;
+            justify-content: flex-end;
+        }
 
-.right-links {
-    flex: 1;
-    justify-content: flex-start;
-}
+        .right-links {
+            flex: 1;
+            justify-content: flex-start;
+        }
 
-/* Mobile styles */
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1rem;
-    }
-    
-    .nav-links {
-        justify-content: center;
-        gap: 2rem;
-    }
-    
-    .logo {
-        order: -1;
-    }
-}
+        /* Mobile styles */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                justify-content: center;
+                gap: 2rem;
+            }
+
+            .logo {
+                order: -1;
+            }
+        }
+
         /* Hero Section */
         .hero {
             height: 100vh;
@@ -206,138 +207,138 @@ nav {
         }
 
         /* Contact Section */
-       .contact {
-    padding: 5rem 2rem;
-    background-color: #f5f5f5;
-}
+        .contact {
+            padding: 5rem 2rem;
+            background-color: #f5f5f5;
+        }
 
-.contact-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 4rem;
-    padding: 2rem;
-}
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            padding: 2rem;
+        }
 
-.contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
 
-.info-item {
-    text-align: left;
-    padding: 1rem;
-}
+        .info-item {
+            text-align: left;
+            padding: 1rem;
+        }
 
-.info-item i {
-    font-size: 1.5rem;
-    color: #1a1a1a;
-    margin-bottom: 1rem;
-}
+        .info-item i {
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
 
-.info-item h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-    letter-spacing: 2px;
-}
+        .info-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
 
-.contact-form {
-    background: white;
-    padding: 3rem;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
 
-.form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 1rem;
-}
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
 
-.form-group {
-    position: relative;
-    margin-bottom: 1.5rem;
-}
+        .form-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
 
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-    background: transparent;
-}
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            background: transparent;
+        }
 
-.form-group textarea {
-    min-height: 150px;
-    resize: vertical;
-}
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
 
-.form-group label {
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    background: white;
-    padding: 0 0.5rem;
-    color: #666;
-    transition: all 0.3s ease;
-    pointer-events: none;
-}
+        .form-group label {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            padding: 0 0.5rem;
+            color: #666;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
 
-.form-group textarea + label {
-    top: 1rem;
-    transform: none;
-}
+        .form-group textarea + label {
+            top: 1rem;
+            transform: none;
+        }
 
-.form-group input:focus + label,
-.form-group textarea:focus + label,
-.form-group input:not(:placeholder-shown) + label,
-.form-group textarea:not(:placeholder-shown) + label {
-    top: 0;
-    font-size: 0.8rem;
-    color: #1a1a1a;
-}
+        .form-group input:focus + label,
+        .form-group textarea:focus + label,
+        .form-group input:not(:placeholder-shown) + label,
+        .form-group textarea:not(:placeholder-shown) + label {
+            top: 0;
+            font-size: 0.8rem;
+            color: #1a1a1a;
+        }
 
-.submit-btn {
-    width: 100%;
-    padding: 1rem;
-    background: #1a1a1a;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
-.submit-btn:hover {
-    background: #333;
-}
+        .submit-btn:hover {
+            background: #333;
+        }
 
-@media (max-width: 768px) {
-    .contact-container {
-        grid-template-columns: 1fr;
-    }
-    
-    .contact-info {
-        text-align: center;
-    }
-    
-    .form-row {
-        grid-template-columns: 1fr;
-    }
-    
-    .contact-form {
-        padding: 2rem;
-    }
-}
-    
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                text-align: center;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+
         /* Footer */
         footer {
             background: #1a1a1a;
@@ -356,119 +357,122 @@ nav {
                 font-size: 2.5rem;
             }
         }
+
         .modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 1001;
-    justify-content: center;
-    align-items: center;
-    overflow-y: auto;
-}
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1001;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+        }
 
-.modal-content {
-    /* Replace this entire block */
-    background-color: white;
-    padding: 2rem;
-    border-radius: 10px;
-    width: 800px;
-    height: 600px;
-    position: relative;
-    margin: 2rem auto;
-}
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 800px;
+            height: 600px;
+            position: relative;
+            margin: 2rem auto;
+        }
 
-/* Close Button */
-.close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: #1a1a1a;
-    padding: 5px 10px;
-}
+        /* Close Button */
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #1a1a1a;
+            padding: 5px 10px;
+        }
 
-/* Carousel */
-.carousel {
-    width: 100%;
-    max-width: 700px;
-    margin: 1rem auto;
-    overflow: hidden;
-}
+        /* Carousel */
+        .carousel {
+            width: 100%;
+            max-width: 700px;
+            margin: 1rem auto;
+            overflow: hidden;
+        }
 
-.carousel-images {
-    display: flex;
-    transition: transform 0.3s ease-in-out;
-}
+        .carousel-images {
+            display: flex;
+            transition: transform 0.3s ease-in-out;
+        }
 
-.carousel-images img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    transition: transform 0.3s ease-in-out;
-    flex-shrink: 0;
-}
+        .carousel-images img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out;
+            flex-shrink: 0;
+        }
 
-.carousel-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 2rem;
-    z-index: 100;
-}
-/* Service Modal Text Styles */
-#serviceTitle {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 2rem;
+            z-index: 100;
+        }
 
-#serviceDescription {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-}
+        /* Service Modal Text Styles */
+        #serviceTitle {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
 
-#servicePrice {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #1a1a1a;
-}
-#prevImage {
-    left: 10px;
-}
+        #serviceDescription {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
 
-#nextImage {
-    right: 10px;
-}
+        #servicePrice {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1a1a1a;
+        }
 
-/* Service Card Hover Effects */
-.service-card {
-    cursor: pointer;
-}
-#square-booking {
-    background: white;
-    border-radius: 10px;
-    overflow: auto;
-    height: calc(100vh - 100px);
-    margin-top: 40px;
-}
+        #prevImage {
+            left: 10px;
+        }
 
-@media (max-width: 768px) {
-    #square-booking {
-        height: calc(100vh - 60px);
-        margin-top: 20px;
-    }
-}
+        #nextImage {
+            right: 10px;
+        }
+
+        /* Service Card Hover Effects */
+        .service-card {
+            cursor: pointer;
+        }
+
+        #square-booking {
+            background: white;
+            border-radius: 10px;
+            overflow: auto;
+            height: calc(100vh - 100px);
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            #square-booking {
+                height: calc(100vh - 60px);
+                margin-top: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -478,72 +482,73 @@ nav {
             <div id="square-booking" style="width: 100%; height: 100%; background: white; border-radius: 10px; overflow: hidden;"></div>
         </div>
     </div>
-   <header>
-    <nav>
-        <div class="nav-links left-links">
-            <a href="#home">HOME</a>
-            <a href="about.html">ABOUT</a>
-        </div>
-        <div class="logo">
-            <img src="./images/mbslogo.webp" alt="Mason's Barber Shop Logo">
-        </div>
-        <div class="nav-links right-links">
-            <a href="#services">SERVICES</a>
-            <a href="#contact">CONTACT</a>
-        </div>
-    </nav>
-</header>
+    <header>
+        <nav>
+            <div class="nav-links left-links">
+                <a href="#home">HOME</a>
+                <a href="about.html">ABOUT</a>
+            </div>
+            <div class="logo">
+                <img src="./images/mbslogo.webp" alt="Mason's Barber Shop Logo">
+            </div>
+            <div class="nav-links right-links">
+                <a href="#services">SERVICES</a>
+                <a href="#contact">CONTACT</a>
+            </div>
+        </nav>
+    </header>
 
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Welcome to Mason's Barber Shop</h1>
             <p>Professional haircuts and grooming services for the modern gentleman</p>
-           <a href="https://app.squareup.com/appointments/book/xmzpfaxw6ri5u1/LYTK0TY4TZ3VK/start" class="cta-button" target="_blank">Book Appointment</a>
+            <a href="https://app.squareup.com/appointments/book/xmzpfaxw6ri5u1/LYTK0TY4TZ3VK/start" class="cta-button" target="_blank">Book Appointment</a>
         </div>
     </section>
-    <div id="serviceModal" class="modal">
-    <div class="modal-content">
-        <button class="close-button">&times;</button>
-        <h2 id="serviceTitle">Service Title</h2>
-        <p id="serviceDescription">Description of the service.</p>
-        <p id="servicePrice">Price: $00.00</p>
 
-        <!-- Image Carousel -->
-        <div class="carousel">
-            <button id="prevImage" class="carousel-button">&#10094;</button>
-            <div id="carouselImages" class="carousel-images">
-                <!-- Images will be dynamically added here -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <button class="close-button">&times;</button>
+            <h2 id="serviceTitle">Service Title</h2>
+            <p id="serviceDescription">Description of the service.</p>
+            <p id="servicePrice">Price: $00.00</p>
+
+            <!-- Image Carousel -->
+            <div class="carousel">
+                <button id="prevImage" class="carousel-button">&#10094;</button>
+                <div id="carouselImages" class="carousel-images">
+                    <!-- Images will be dynamically added here -->
+                </div>
+                <button id="nextImage" class="carousel-button">&#10095;</button>
             </div>
-            <button id="nextImage" class="carousel-button">&#10095;</button>
         </div>
     </div>
-</div>
 
     <section id="services" class="services">
-    <h2 class="section-title">Our Services</h2>
-    <div class="services-grid">
-        <div class="service-card">
-            <i class="fas fa-cut"></i>
-            <h3>Haircut</h3>
-            <p>Classic and modern haircuts tailored to your style</p>
-            <p>$25</p>
-        </div>
-        <div class="service-card">
-            <div style="margin-bottom: 1rem;">
-                <img src="./images/450-logo-1712247308.244color-FFC107.svg" alt="Clean Shave Razor Icon" style="width: 50px; height: auto;">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-cut"></i>
+                <h3>Haircut</h3>
+                <p>Classic and modern haircuts tailored to your style</p>
+                <p>$25</p>
             </div>
-            <h3>Clean Shave</h3>
-            <p>Traditional hot towel straight razor shave</p>
-            <p>$20</p>
+            <div class="service-card">
+                <div style="margin-bottom: 1rem;">
+                    <img src="./images/450-logo-1712247308.244color-FFC107.svg" alt="Clean Shave Razor Icon" style="width: 50px; height: auto;">
+                </div>
+                <h3>Clean Shave</h3>
+                <p>Traditional hot towel straight razor shave</p>
+                <p>$20</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-user-tie"></i>
+                <h3>Beard Trim</h3>
+                <p>Professional beard grooming and styling</p>
+                <p>$15</p>
+            </div>
         </div>
-        <div class="service-card">
-            <i class="fas fa-user-tie"></i>
-            <h3>Beard Trim</h3>
-            <p>Professional beard grooming and styling</p>
-            <p>$15</p>
-        </div>
-    </div>
-</section>
+    </section>
 
     <section id="hours" class="hours">
         <div class="hours-content">
@@ -562,203 +567,203 @@ nav {
     </section>
 
     <section id="contact" class="contact">
-    <h2 class="section-title">CONTACT US</h2>
-    <div class="contact-container">
-        <div class="contact-info">
-            <div class="info-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <h3>LOCATION</h3>
-                <p>123 Main Street<br>City, State 12345</p>
+        <h2 class="section-title">CONTACT US</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>LOCATION</h3>
+                    <p>123 Main Street<br>City, State 12345</p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <h3>PHONE</h3>
+                    <p>(555) 123-4567</p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <h3>EMAIL</h3>
+                    <p>info@masonsbarber.com</p>
+                </div>
             </div>
-            <div class="info-item">
-                <i class="fas fa-phone"></i>
-                <h3>PHONE</h3>
-                <p>(555) 123-4567</p>
-            </div>
-            <div class="info-item">
-                <i class="fas fa-envelope"></i>
-                <h3>EMAIL</h3>
-                <p>info@masonsbarber.com</p>
-            </div>
+            <form class="contact-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" id="firstName" name="firstName" required>
+                        <label for="firstName">First Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="lastName" name="lastName" required>
+                        <label for="lastName">Last Name</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" required>
+                    <label for="email">Email</label>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="phone" name="phone" required>
+                    <label for="phone">Phone</label>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" required></textarea>
+                    <label for="message">Message</label>
+                </div>
+                <button type="submit" class="submit-btn">SEND MESSAGE</button>
+            </form>
         </div>
-        <form class="contact-form">
-            <div class="form-row">
-                <div class="form-group">
-                    <input type="text" id="firstName" name="firstName" required>
-                    <label for="firstName">First Name</label>
-                </div>
-                <div class="form-group">
-                    <input type="text" id="lastName" name="lastName" required>
-                    <label for="lastName">Last Name</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <input type="email" id="email" name="email" required>
-                <label for="email">Email</label>
-            </div>
-            <div class="form-group">
-                <input type="tel" id="phone" name="phone" required>
-                <label for="phone">Phone</label>
-            </div>
-            <div class="form-group">
-                <textarea id="message" name="message" required></textarea>
-                <label for="message">Message</label>
-            </div>
-            <button type="submit" class="submit-btn">SEND MESSAGE</button>
-        </form>
-    </div>
-</section>
+    </section>
+
     <footer>
         <p>&copy; 2024 Mason's Barber Shop. All rights reserved.</p>
     </footer>
+
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Modal and Service Cards
-    const serviceCards = document.querySelectorAll('.service-card');
-    const modal = document.getElementById('serviceModal');
-    const closeBtn = document.querySelector('.close-button');
-    const serviceTitle = document.getElementById('serviceTitle');
-    const serviceDescription = document.getElementById('serviceDescription');
-    const servicePrice = document.getElementById('servicePrice');
-    const carouselImages = document.getElementById('carouselImages');
-    const prevImage = document.getElementById('prevImage');
-    const nextImage = document.getElementById('nextImage');
-    
-    let currentImageIndex = 0;
-    let images = [];
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modal and Service Cards
+            const serviceCards = document.querySelectorAll('.service-card');
+            const modal = document.getElementById('serviceModal');
+            const closeBtn = document.querySelector('.close-button');
+            const serviceTitle = document.getElementById('serviceTitle');
+            const serviceDescription = document.getElementById('serviceDescription');
+            const servicePrice = document.getElementById('servicePrice');
+            const carouselImages = document.getElementById('carouselImages');
+            const prevImage = document.getElementById('prevImage');
+            const nextImage = document.getElementById('nextImage');
 
-    // Service Data
-const serviceData = [
-    {
-        title: 'Haircut',
-        description: 'Classic and modern haircuts tailored to your style.',
-        price: '$25',
-        images: [
-            './images/haircut1.jpg',
-            './images/haircut2.jpg',
-            './images/haircut3.jpg'
-        ]
-    },
-    {
-        title: 'Clean Shave',
-        description: 'Traditional hot towel straight razor shave.',
-        price: '$20',
-        images: [
-            './images/shave1.jpg',
-            './images/shave2.jpg',
-            './images/shave3.jpg'
-        ]
-    },
-    {
-        title: 'Beard Trim',
-        description: 'Professional beard grooming and styling.',
-        price: '$15',
-        images: [
-            './images/beard1.jpg',
-            './images/beard2.jpg',
-            './images/beard3.jpg'
-        ]
-    }
-];
+            let currentImageIndex = 0;
+            let images = [];
 
-    // Open Modal for each service card
-    serviceCards.forEach((card, index) => {
-        card.addEventListener('click', () => {
-            const service = serviceData[index];
-            serviceTitle.textContent = service.title;
-            serviceDescription.textContent = service.description;
-            servicePrice.textContent = `Price: ${service.price}`;
-            
-            // Clear previous images in the carousel
-            carouselImages.innerHTML = '';
-            images = service.images;
-            currentImageIndex = 0;
-            
-            // Add images to the carousel
-            images.forEach(imgSrc => {
-                const img = document.createElement('img');
-                img.src = imgSrc;
-                carouselImages.appendChild(img);
+            // Service Data
+            const serviceData = [
+                {
+                    title: 'Haircut',
+                    description: 'Classic and modern haircuts tailored to your style.',
+                    price: '$25',
+                    images: [
+                        './images/haircut1.jpg',
+                        './images/haircut2.jpg',
+                        './images/haircut3.jpg'
+                    ]
+                },
+                {
+                    title: 'Clean Shave',
+                    description: 'Traditional hot towel straight razor shave.',
+                    price: '$20',
+                    images: [
+                        './images/shave1.jpg',
+                        './images/shave2.jpg',
+                        './images/shave3.jpg'
+                    ]
+                },
+                {
+                    title: 'Beard Trim',
+                    description: 'Professional beard grooming and styling.',
+                    price: '$15',
+                    images: [
+                        './images/beard1.jpg',
+                        './images/beard2.jpg',
+                        './images/beard3.jpg'
+                    ]
+                }
+            ];
+
+            // Open Modal for each service card
+            serviceCards.forEach((card, index) => {
+                card.addEventListener('click', () => {
+                    const service = serviceData[index];
+                    serviceTitle.textContent = service.title;
+                    serviceDescription.textContent = service.description;
+                    servicePrice.textContent = `Price: ${service.price}`;
+
+                    // Clear previous images in the carousel
+                    carouselImages.innerHTML = '';
+                    images = service.images;
+                    currentImageIndex = 0;
+
+                    // Add images to the carousel
+                    images.forEach(imgSrc => {
+                        const img = document.createElement('img');
+                        img.src = imgSrc;
+                        carouselImages.appendChild(img);
+                    });
+
+                    // Show modal
+                    modal.style.display = 'flex';
+                });
             });
 
-            // Show modal
-            modal.style.display = 'flex';
-        });
-    });
-
-    // Close Modal
-    closeBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
-
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.style.display = 'none';
-        }
-    });
-
-    // Carousel Navigation
-    prevImage.addEventListener('click', () => {
-        if (currentImageIndex > 0) {
-            currentImageIndex--;
-            updateCarousel();
-        }
-    });
-
-    nextImage.addEventListener('click', () => {
-        if (currentImageIndex < images.length - 1) {
-            currentImageIndex++;
-            updateCarousel();
-        }
-    });
-
-    function updateCarousel() {
-        const imgElements = carouselImages.getElementsByTagName('img');
-        Array.from(imgElements).forEach((img, index) => {
-            img.style.transform = `translateX(-${currentImageIndex * 100}%)`;
-        });
-    }
-});
-</script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const form = document.querySelector('.contact-form');
-        
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Here you would typically send the form data to your server
-            // For now, we'll just show an alert
-            alert('Thank you for your message! We will get back to you soon.');
-            form.reset();
-        });
-    });
-</script>
-   <script>
-    let squareInitialized = false;
-
-    function showBooking() {
-        document.getElementById('square-booking-container').style.display = 'block';
-        if (!squareInitialized) {
-            initializeSquareBooking();
-        }
-    }
-
-    function closeBooking() {
-        document.getElementById('square-booking-container').style.display = 'none';
-    }
-
-    function initializeSquareBooking() {
-        const script = document.createElement('script');
-        <script src="https://app.squareup.com/appointments/book/xmzpfaxw6ri5u1/LYTK0TY4TZ3VK/start";
-        script.onload = function() {
-            squareInitialized = true;
-            SquareAppointmentsFloatingButton.openBookingWidget({
-                element: document.getElementById('square-booking')
+            // Close Modal
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
             });
-        };
-        document.body.appendChild(script);
-    }
-</script>
+
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            // Carousel Navigation
+            prevImage.addEventListener('click', () => {
+                if (currentImageIndex > 0) {
+                    currentImageIndex--;
+                    updateCarousel();
+                }
+            });
+
+            nextImage.addEventListener('click', () => {
+                if (currentImageIndex < images.length - 1) {
+                    currentImageIndex++;
+                    updateCarousel();
+                }
+            });
+
+            function updateCarousel() {
+                const imgElements = carouselImages.getElementsByTagName('img');
+                Array.from(imgElements).forEach((img, index) => {
+                    img.style.transform = `translateX(-${currentImageIndex * 100}%)`;
+                });
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('.contact-form');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Here you would typically send the form data to your server
+                // For now, we'll just show an alert
+                alert('Thank you for your message! We will get back to you soon.');
+                form.reset();
+            });
+        });
+
+        let squareInitialized = false;
+
+        function showBooking() {
+            document.getElementById('square-booking-container').style.display = 'block';
+            if (!squareInitialized) {
+                initializeSquareBooking();
+            }
+        }
+
+        function closeBooking() {
+            document.getElementById('square-booking-container').style.display = 'none';
+        }
+
+        function initializeSquareBooking() {
+            const script = document.createElement('script');
+            script.src = "https://app.squareup.com/appointments/book/xmzpfaxw6ri5u1/LYTK0TY4TZ3VK/start";
+            script.onload = function() {
+                squareInitialized = true;
+                SquareAppointmentsFloatingButton.openBookingWidget({
+                    element: document.getElementById('square-booking')
+                });
+            };
+            document.body.appendChild(script);
+        }
+    </script>
 </body>
 </html>
