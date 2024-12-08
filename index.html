@@ -15,15 +15,15 @@
 
         /* Header Styles */
         header {
-            background: #1a1a1a;
-            color: white;
-            padding: 1rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
+    background: #1a1a1a;
+    color: white;
+    padding: 2rem; /* Increased from 1rem */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    height: 120px; /* Added fixed height */
+}
         nav {
             max-width: 1200px;
             margin: 0 auto;
@@ -33,9 +33,17 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
+    font-size: 2rem; /* Increased from 1.5rem */
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo img {
+    height: 80px; /* Height for your logo image */
+    width: auto;
+}
 
         .nav-links {
             list-style: none;
@@ -438,17 +446,19 @@
 </head>
 <body>
     <header>
-        <nav>
-            <div class="logo">Mason's Barber Shop</div>
-            <ul class="nav-links">
-    <li><a href="#home">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#hours">Hours</a></li>
-    <li><a href="#contact">Contact</a></li>
-</ul>
-        </nav>
-    </header>
+    <nav>
+        <div class="logo">
+            <img src="./images/mbslogo.webp" alt="Mason's Barber Shop Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#hours">Hours</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
 
     <section id="home" class="hero">
         <div class="hero-content">
