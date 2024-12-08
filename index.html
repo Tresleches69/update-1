@@ -601,6 +601,12 @@ nav {
     <script src='https://square.site/appointments/buyer/widget/xmzpfaxw6ri5u1/LYTK0TY4TZ3VK.js'></script>
 </head>
 <body>
+    <div id="square-booking-container" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000;">
+    <div style="position: relative; width: 100%; height: 100%; max-width: 1200px; margin: 0 auto; padding: 20px;">
+        <button onclick="closeBooking()" style="position: absolute; right: 20px; top: 20px; background: white; border: none; padding: 10px; cursor: pointer; border-radius: 5px; z-index: 2001;">Close</button>
+        <div id="square-booking" style="width: 100%; height: 100%; background: white; border-radius: 10px; overflow: hidden;"></div>
+    </div>
+</div>
    <header>
     <nav>
         <div class="nav-links left-links">
@@ -621,7 +627,7 @@ nav {
         <div class="hero-content">
             <h1>Welcome to Mason's Barber Shop</h1>
             <p>Professional haircuts and grooming services for the modern gentleman</p>
-            <a href="javascript:void(0);" class="cta-button" onclick="SquareAppointmentsFloatingButton.show()">Book Appointment</a>
+            <a href="javascript:void(0);" class="cta-button" onclick="showBooking()">Book Appointment</a>
         </div>
     </section>
     <div id="serviceModal" class="modal">
@@ -860,6 +866,18 @@ const serviceData = [
             form.reset();
         });
     });
+</script>
+    <script>
+    function showBooking() {
+        document.getElementById('square-booking-container').style.display = 'block';
+        SquareAppointmentsFloatingButton.openBookingWidget({
+            element: document.getElementById('square-booking')
+        });
+    }
+
+    function closeBooking() {
+        document.getElementById('square-booking-container').style.display = 'none';
+    }
 </script>
 </body>
 </html>
