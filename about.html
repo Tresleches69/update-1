@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Mason's Barber Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Header Styles */
+        header {
+            background: #1a1a1a;
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 8rem 2rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-content {
+            margin-bottom: 4rem;
+            line-height: 1.8;
+        }
+
+        .about-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        /* Image Carousel */
+        .carousel-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            gap: 20px;
+        }
+
+        .carousel-image {
+            min-width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .carousel-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .carousel-button {
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .carousel-button:hover {
+            background: #333;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Mason's Barber Shop</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#hours">Hours</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="about-section">
+        <div class="about-content">
+            <h1>Our Story</h1>
+            <p>Founded in 1995 by Master Barber James Mason, Mason's Barber Shop has been a cornerstone of the community for over 25 years. What started as a small, one-chair operation has grown into a beloved establishment where traditional craftsmanship meets modern style.</p>
+            
+            <p>James learned the art of barbering from his father, who ran a shop in downtown for over four decades. This family legacy of precision cuts and warm, personal service continues to this day. Every customer who walks through our doors isn't just a client – they're part of our extended family.</p>
+            
+            <p>Over the years, we've expanded our services while maintaining the intimate, welcoming atmosphere that made us famous. Our team of skilled barbers combines time-honored techniques with contemporary styles to give each client exactly what they're looking for. Whether you're here for a classic cut, hot towel shave, or modern styling, you'll experience the difference that decades of expertise makes.</p>
+            
+            <p>Today, Mason's Barber Shop stands as a testament to the enduring value of quality service, attention to detail, and genuine community connection. We're proud to be your neighborhood barber shop, and we look forward to continuing our tradition of excellence for generations to come.</p>
+        </div>
+
+        <div class="carousel-container">
+            <div class="carousel">
+                <img src="/api/placeholder/300/200" alt="Barber Shop Image 1" class="carousel-image">
+                <img src="/api/placeholder/300/200" alt="Barber Shop Image 2" class="carousel-image">
+                <img src="/api/placeholder/300/200" alt="Barber Shop Image 3" class="carousel-image">
+                <img src="/api/placeholder/300/200" alt="Barber Shop Image 4" class="carousel-image">
+                <img src="/api/placeholder/300/200" alt="Barber Shop Image 5" class="carousel-image">
+            </div>
+            <div class="carousel-buttons">
+                <button class="carousel-button" onclick="moveCarousel(-1)">Previous</button>
+                <button class="carousel-button" onclick="moveCarousel(1)">Next</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Mason's Barber Shop. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let currentPosition = 0;
+        const carousel = document.querySelector('.carousel');
+        const images = document.querySelectorAll('.carousel-image');
+        const imageWidth = 320; // Image width + gap
+
+        function moveCarousel(direction) {
+            const maxPosition = -(images.length - 3) * imageWidth;
+            
+            currentPosition += direction * imageWidth;
+            
+            // Loop back to start/end when reaching the limits
+            if (currentPosition > 0) currentPosition = maxPosition;
+            if (currentPosition < maxPosition) currentPosition = 0;
+            
+            carousel.style.transform = `translateX(${currentPosition}px)`;
+        }
+
+        // Optional: Auto-scroll
+        setInterval(() => moveCarousel(1), 5000);
+    </script>
+</body>
+</html>
