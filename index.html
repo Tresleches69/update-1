@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mason's Barber Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Header Styles */
+        header {
+            background: #1a1a1a;
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                        url('./images/hero-background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            padding: 2rem;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .cta-button {
+            background: #ffd700;
+            color: #1a1a1a;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #ffed4a;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            text-align: center;
+            padding: 2rem;
+            background: #f5f5f5;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            color: #ffd700;
+            margin-bottom: 1rem;
+        }
+
+        /* Hours Section */
+        .hours {
+            background: #1a1a1a;
+            color: white;
+            padding: 5rem 2rem;
+        }
+
+        .hours-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+            justify-content: center;
+            align-items: flex-start;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            margin: 2rem auto;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #1a1a1a;
+            padding: 5px 10px;
+        }
+
+        /* Calendar Styles */
+        .calendar {
+            width: 100%;
+            margin-top: 1rem;
+            background: white;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background: #f5f5f5;
+            border-radius: 5px;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .calendar-day {
+            padding: 10px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .calendar-day:hover:not(.disabled) {
+            background-color: #f0f0f0;
+        }
+
+        .calendar-day.disabled {
+            color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .calendar-day.available {
+            background-color: #90EE90;
+            color: #000;
+        }
+
+        .weekday-header {
+            font-weight: bold;
+            padding: 10px;
+            background-color: #f5f5f5;
+        }
+
+        /* Time Slots Styles */
+        .time-slots {
+            display: none;
+            margin-top: 1rem;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 0.5rem;
+            background: white;
+        }
+
+        .time-slot {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .time-slot:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* Custom Scrollbar */
+        .time-slots::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .time-slots::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .time-slots::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        .time-slots::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .selected-date {
+            margin-top: 1rem;
+            font-weight: bold;
+            padding: 0.5rem;
+            background: #f5f5f5;
+            border-radius: 5px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Mason's Barber Shop</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#hours">Hours</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Mason's Barber Shop</h1>
+            <p>Professional haircuts and grooming services for the modern gentleman</p>
+            <a href="javascript:void(0);" class="cta-button">Book Appointment</a>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-cut"></i>
+                <h3>Haircut</h3>
+                <p>Classic and modern haircuts tailored to your style</p>
+                <p>$25</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-razor"></i>
+                <h3>Clean Shave</h3>
+                <p>Traditional hot towel straight razor shave</p>
+                <p>$20</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-user-tie"></i>
+                <h3>Beard Trim</h3>
+                <p>Professional beard grooming and styling</p>
+                <p>$15</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="hours" class="hours">
+        <div class="hours-content">
+            <h2 class="section-title">Business Hours</h2>
+            <div class="hours-grid">
+                <div>
+                    <h3>Monday - Friday</h3>
+                    <p>9:00 AM - 7:00 PM</p>
+                </div>
+                <div>
+                    <h3>Saturday</h3>
+                    <p>8:00 AM - 5:00 PM</p>
+                </div>
+                <div>
+                    <h3>Sunday</h3>
+                    <p>Closed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-info">
+            <div>
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Location</h3>
+                <p>123 Main Street<br>City, State 12345</p>
+            </div>
+            <div>
+                <i class="fas fa-phone"></i>
+                <h3>Phone</h3>
+                <p>(555) 123-4567</p>
+            </div>
+            <div>
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p>info@masonsbarber.com</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Mason's Barber Shop. All rights reserved.</p>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <button class="close-button">&times;</button>
+            <h2 style="margin-bottom: 1rem;">Book Appointment</h2>
+            <div class="calendar">
+                <div class="calendar-header">
+                    <button id="prevMonth">&lt;</button>
+                    <h3 id="currentMonth">December 2024</h3>
+                    <button id="nextMonth">&gt;</button>
+                </div>
+                <div class="calendar-grid">
+                    <div class="weekday-header">Sun</div>
+                    <div class="weekday-header">Mon</div>
+                    <div class="weekday-header">Tue</div>
+                    <div class="weekday-header">Wed</div>
+                    <div class="weekday-header">Thu</div>
+                    <div class="weekday-header">Fri</div>
+                    <div class="weekday-header">Sat</div>
+                </div>
+                <div class="selected-date"></div>
+                <div class="time-slots"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Generate all weekday dates for the current year
+        function generateAvailableDates() {
+            const dates = [];
+            const currentDate = new Date();
+            const year = currentDate.getFullYear();
+            const endDate = new Date(year, 11, 31); // December 31st
+
+            for (let d = new Date(year, 0, 1); d <= endDate; d.setDate(d.getDate() + 1)) {
+                // Only include Monday (1) through Friday (5)
+                if (d.getDay() >= 1 && d.getDay() <= 5) {
+                    dates.push(d.toISOString().split('T')[0]);
+                }
+            }
+            return dates;
+        }
+
+        // Generate time slots in 30-minute increments
+        function generateTimeSlots() {
+            const slots = [];
+            const startTime = 8 * 60; // 8:00 AM in minutes
+            const endTime = 16.5 * 60; // 4:30 PM in minutes
+            const increment = 30; // 30 minutes
+
+            for (let time = startTime; time <= endTime; time += increment) {
+                const hours = Math.floor(time / 60);
+                const minutes = time % 60;
+                const ampm = hours >= 12 ? 'PM' :
+                const ampm = hours >= 12 ? 'PM' : 'AM';
+                const formattedHours = hours > 12 ? hours - 12 : (hours === 0 ? 12 : hours);
+                const formattedTime = `${formattedHours}:${minutes.toString().padStart(2, '0')} ${ampm}`;
+                slots.push(formattedTime);
+            }
+            return slots;
+        }
+
+        // Initialize available dates and time slots
+        const availableDates = generateAvailableDates();
+        const timeSlots = generateTimeSlots();
+        let currentDate = new Date();
+
+        // Initialize booking system
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM Loaded'); // Debug log
+            const modal = document.getElementById('bookingModal');
+            const closeBtn = document.querySelector('.close-button');
+            const bookButtons = document.querySelectorAll('.cta-button');
+            const prevMonthBtn = document.getElementById('prevMonth');
+            const nextMonthBtn = document.getElementById('nextMonth');
+            
+            console.log('Found buttons:', bookButtons.length); // Debug log
+
+            bookButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    console.log('Button clicked'); // Debug log
+                    e.preventDefault();
+                    modal.style.display = 'flex';
+                    renderCalendar();
+                });
+            });
+
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            prevMonthBtn.addEventListener('click', () => {
+                currentDate.setMonth(currentDate.getMonth() - 1);
+                renderCalendar();
+            });
+
+            nextMonthBtn.addEventListener('click', () => {
+                currentDate.setMonth(currentDate.getMonth() + 1);
+                renderCalendar();
+            });
+        });
+
+        function renderCalendar() {
+            const calendarGrid = document.querySelector('.calendar-grid');
+            const currentMonthElement = document.getElementById('currentMonth');
+            
+            // Clear existing calendar days (except headers)
+            const headers = document.querySelectorAll('.weekday-header');
+            calendarGrid.innerHTML = '';
+            headers.forEach(header => calendarGrid.appendChild(header));
+
+            // Set current month display
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                              'July', 'August', 'September', 'October', 'November', 'December'];
+            currentMonthElement.textContent = `${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
+
+            // Get first day of month and total days
+            const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+            const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+            const totalDays = lastDay.getDate();
+            
+            // Add empty cells for days before first of month
+            for (let i = 0; i < firstDay.getDay(); i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.className = 'calendar-day disabled';
+                calendarGrid.appendChild(emptyDay);
+            }
+
+            // Add calendar days
+            for (let day = 1; day <= totalDays; day++) {
+                const dateDiv = document.createElement('div');
+                dateDiv.className = 'calendar-day';
+                dateDiv.textContent = day;
+
+                const currentDateString = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                
+                if (availableDates.includes(currentDateString)) {
+                    dateDiv.classList.add('available');
+                    dateDiv.addEventListener('click', () => showTimeSlots(currentDateString));
+                } else {
+                    dateDiv.classList.add('disabled');
+                }
+
+                calendarGrid.appendChild(dateDiv);
+            }
+        }
+
+        function showTimeSlots(date) {
+            const timeSlotsDiv = document.querySelector('.time-slots');
+            const selectedDateDiv = document.querySelector('.selected-date');
+            
+            selectedDateDiv.textContent = `Selected Date: ${date}`;
+            timeSlotsDiv.style.display = 'block';
+            timeSlotsDiv.innerHTML = '';
+
+            timeSlots.forEach(time => {
+                const slot = document.createElement('div');
+                slot.className = 'time-slot';
+                slot.textContent = time;
+                slot.addEventListener('click', () => bookAppointment(date, time));
+                timeSlotsDiv.appendChild(slot);
+            });
+        }
+
+        function bookAppointment(date, time) {
+            alert(`Booking confirmed for ${date} at ${time}`);
+            document.getElementById('bookingModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
