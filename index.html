@@ -335,6 +335,88 @@
                 font-size: 2.5rem;
             }
         }
+        .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1001;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    margin: 2rem auto;
+}
+
+/* Close Button */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #1a1a1a;
+    padding: 5px 10px;
+}
+
+/* Carousel */
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 1rem auto;
+}
+
+.carousel-images {
+    display: flex;
+    overflow: hidden;
+    max-height: 300px;
+}
+
+.carousel-images img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 2rem;
+    z-index: 100;
+}
+
+#prevImage {
+    left: 10px;
+}
+
+#nextImage {
+    right: 10px;
+}
+
+/* Service Card Hover Effects */
+.service-card {
+    cursor: pointer;
+}
     </style>
 </head>
 <body>
@@ -358,6 +440,23 @@
             <a href="javascript:void(0);" class="cta-button">Book Appointment</a>
         </div>
     </section>
+    <div id="serviceModal" class="modal">
+    <div class="modal-content">
+        <button class="close-button">&times;</button>
+        <h2 id="serviceTitle">Service Title</h2>
+        <p id="serviceDescription">Description of the service.</p>
+        <p id="servicePrice">Price: $00.00</p>
+
+        <!-- Image Carousel -->
+        <div class="carousel">
+            <button id="prevImage" class="carousel-button">&#10094;</button>
+            <div id="carouselImages" class="carousel-images">
+                <!-- Images will be dynamically added here -->
+            </div>
+            <button id="nextImage" class="carousel-button">&#10095;</button>
+        </div>
+    </div>
+</div>
 
     <section id="services" class="services">
         <h2 class="section-title">Our Services</h2>
@@ -617,6 +716,109 @@
         alert(`Booking confirmed for ${date} at ${time}`);
         document.getElementById('bookingModal').style.display = 'none';
     }
+</script>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Modal and Service Cards
+    const serviceCards = document.querySelectorAll('.service-card');
+    const modal = document.getElementById('serviceModal');
+    const closeBtn = document.querySelector('.close-button');
+    const serviceTitle = document.getElementById('serviceTitle');
+    const serviceDescription = document.getElementById('serviceDescription');
+    const servicePrice = document.getElementById('servicePrice');
+    const carouselImages = document.getElementById('carouselImages');
+    const prevImage = document.getElementById('prevImage');
+    const nextImage = document.getElementById('nextImage');
+    
+    let currentImageIndex = 0;
+    let images = [];
+
+    // Service Data
+    const serviceData = [
+        {
+            title: 'Haircut',
+            description: 'Classic and modern haircuts tailored to your style.',
+            price: '$25',
+            images: [
+                'path_to_image1.jpg', 'path_to_image2.jpg', 'path_to_image3.jpg'
+            ]
+        },
+        {
+            title: 'Clean Shave',
+            description: 'Traditional hot towel straight razor shave.',
+            price: '$20',
+            images: [
+                'path_to_image4.jpg', 'path_to_image5.jpg', 'path_to_image6.jpg'
+            ]
+        },
+        {
+            title: 'Beard Trim',
+            description: 'Professional beard grooming and styling.',
+            price: '$15',
+            images: [
+                'path_to_image7.jpg', 'path_to_image8.jpg', 'path_to_image9.jpg'
+            ]
+        }
+    ];
+
+    // Open Modal for each service card
+    serviceCards.forEach((card, index) => {
+        card.addEventListener('click', () => {
+            const service = serviceData[index];
+            serviceTitle.textContent = service.title;
+            serviceDescription.textContent = service.description;
+            servicePrice.textContent = `Price: ${service.price}`;
+            
+            // Clear previous images in the carousel
+            carouselImages.innerHTML = '';
+            images = service.images;
+            currentImageIndex = 0;
+            
+            // Add images to the carousel
+            images.forEach(imgSrc => {
+                const img = document.createElement('img');
+                img.src = imgSrc;
+                carouselImages.appendChild(img);
+            });
+
+            // Show modal
+            modal.style.display = 'flex';
+        });
+    });
+
+    // Close Modal
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+    // Carousel Navigation
+    prevImage.addEventListener('click', () => {
+        if (currentImageIndex > 0) {
+            currentImageIndex--;
+            updateCarousel();
+        }
+    });
+
+    nextImage.addEventListener('click', () => {
+        if (currentImageIndex < images.length - 1) {
+            currentImageIndex++;
+            updateCarousel();
+        }
+    });
+
+    function updateCarousel() {
+        const imgElements = carouselImages.getElementsByTagName('img');
+        Array.from(imgElements).forEach((img, index) => {
+            img.style.transform = `translateX(-${currentImageIndex * 100}%)`;
+        });
+    }
+});
 </script>
 </body>
 </html>
