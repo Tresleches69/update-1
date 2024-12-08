@@ -172,7 +172,7 @@
         </div>
     </section>
 
-    <footer>
+        <footer>
         <p>&copy; 2024 Mason's Barber Shop. All rights reserved.</p>
     </footer>
 
@@ -181,20 +181,34 @@
         const carousel = document.querySelector('.carousel');
         const images = document.querySelectorAll('.carousel-image');
         const imageWidth = 320; // Image width + gap
+        const totalImages = images.length;
 
         function moveCarousel(direction) {
-            const maxPosition = -(images.length - 3) * imageWidth;
-            
             currentPosition += direction * imageWidth;
             
-            // Loop back to start/end when reaching the limits
-            if (currentPosition > 0) currentPosition = maxPosition;
-            if (currentPosition < maxPosition) currentPosition = 0;
+            // Create smooth infinite loop
+            if (currentPosition < -(totalImages - 1) * imageWidth) {
+                // When going past the last image to the right
+                currentPosition = 0;
+                carousel.style.transition = 'none';
+                carousel.style.transform = `translateX(${currentPosition}px)`;
+                setTimeout(() => {
+                    carousel.style.transition = 'transform 0.5s ease-in-out';
+                }, 10);
+            } else if (currentPosition > 0) {
+                // When going past the first image to the left
+                currentPosition = -(totalImages - 1) * imageWidth;
+                carousel.style.transition = 'none';
+                carousel.style.transform = `translateX(${currentPosition}px)`;
+                setTimeout(() => {
+                    carousel.style.transition = 'transform 0.5s ease-in-out';
+                }, 10);
+            }
             
             carousel.style.transform = `translateX(${currentPosition}px)`;
         }
 
-        // Optional: Auto-scroll
+        // Auto-scroll
         setInterval(() => moveCarousel(1), 5000);
     </script>
 </body>
