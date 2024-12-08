@@ -79,10 +79,10 @@
 
         /* Image Carousel */
         .carousel-container {
-    width: 100%;
+    width: calc(300px * 3 + 40px); /* Width of 3 images plus gaps */
     overflow: hidden;
     position: relative;
-    margin: 2rem 0;
+    margin: 2rem auto;
     padding: 0 20px;
 }
 
@@ -190,20 +190,46 @@
 
     function moveCarousel(direction) {
         currentPosition += direction * imageWidth;
-        const maxScroll = -(totalImages - visibleImages) * imageWidth;
+        
+        // Calculate which images should be visible
+        let lastIndex = Math.abs(currentPosition / imageWidth) + visibleImages;
+        let firstIndex = Math.abs(currentPosition / imageWidth);
 
-        // Handle infinite loop
-        if (currentPosition < maxScroll) {
+        // Handle wrapping
+        if (lastIndex > totalImages) {
+            // Clone first images and append to end for smooth transition
+            const clonedImages = Array.from(images)
+                .slice(0, lastIndex - totalImages)
+                .map(img => img.cloneNode(true));
+                
+            // Remove any existing clones
+            const existingClones = carousel.querySelectorAll('.cloned');
+            existingClones.forEach(clone => clone.remove());
+            
+            // Add new clones
+            clonedImages.forEach(clone => {
+                clone.classList.add('cloned');
+                carousel.appendChild(clone);
+            });
+        }
+
+        if (firstIndex >= totalImages - 2) {
+            // Reset to beginning
             currentPosition = 0;
             carousel.style.transition = 'none';
             carousel.style.transform = `translateX(${currentPosition}px)`;
-            carousel.offsetHeight; // Force reflow
+            // Force reflow
+            carousel.offsetHeight;
             carousel.style.transition = 'transform 0.5s ease-in-out';
-        } else if (currentPosition > 0) {
-            currentPosition = maxScroll;
+        }
+
+        if (currentPosition > 0) {
+            // Jump to end
+            currentPosition = -((totalImages - visibleImages) * imageWidth);
             carousel.style.transition = 'none';
             carousel.style.transform = `translateX(${currentPosition}px)`;
-            carousel.offsetHeight; // Force reflow
+            // Force reflow
+            carousel.offsetHeight;
             carousel.style.transition = 'transform 0.5s ease-in-out';
         }
 
