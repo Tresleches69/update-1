@@ -740,32 +740,38 @@ document.addEventListener('DOMContentLoaded', function() {
     let images = [];
 
     // Service Data
-    const serviceData = [
-        {
-            title: 'Haircut',
-            description: 'Classic and modern haircuts tailored to your style.',
-            price: '$25',
-            images: [
-                'path_to_image1.jpg', 'path_to_image2.jpg', 'path_to_image3.jpg'
-            ]
-        },
-        {
-            title: 'Clean Shave',
-            description: 'Traditional hot towel straight razor shave.',
-            price: '$20',
-            images: [
-                'path_to_image4.jpg', 'path_to_image5.jpg', 'path_to_image6.jpg'
-            ]
-        },
-        {
-            title: 'Beard Trim',
-            description: 'Professional beard grooming and styling.',
-            price: '$15',
-            images: [
-                'path_to_image7.jpg', 'path_to_image8.jpg', 'path_to_image9.jpg'
-            ]
-        }
-    ];
+const serviceData = [
+    {
+        title: 'Haircut',
+        description: 'Classic and modern haircuts tailored to your style.',
+        price: '$25',
+        images: [
+            './images/haircut/haircut1.jpg',
+            './images/haircut/haircut2.jpg',
+            './images/haircut/haircut3.jpg'
+        ]
+    },
+    {
+        title: 'Clean Shave',
+        description: 'Traditional hot towel straight razor shave.',
+        price: '$20',
+        images: [
+            './images/shave/shave1.jpg',
+            './images/shave/shave2.jpg',
+            './images/shave/shave3.jpg'
+        ]
+    },
+    {
+        title: 'Beard Trim',
+        description: 'Professional beard grooming and styling.',
+        price: '$15',
+        images: [
+            './images/beard/beard1.jpg',
+            './images/beard/beard2.jpg',
+            './images/beard/beard3.jpg'
+        ]
+    }
+];
 
     // Open Modal for each service card
     serviceCards.forEach((card, index) => {
