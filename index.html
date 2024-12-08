@@ -472,21 +472,21 @@
 
     // Generate time slots in 30-minute increments
     function generateTimeSlots() {
-        const slots = [];
-        const startTime = 8 * 60; // 8:00 AM in minutes
-        const endTime = 16.5 * 60; // 4:30 PM in minutes
-        const increment = 30; // 30 minutes
+    const slots = [];
+    const startTime = 8 * 60; // 8:00 AM in minutes
+    const endTime = 16.5 * 60; // 4:30 PM in minutes
+    const increment = 30; // 30 minutes
 
-        for (let time = startTime; time <= endTime; time += increment) {
-            const hours = Math.floor(time / 60);
-            const minutes = time % 60;
-            const ampm = hours >= 12 ? 'PM' : 'AM';
-            const formattedHours = hours > 12 ? hours - 12 : (hours === 0 ? 12 : hours);
-            const formattedTime = `${formattedHours}:${minutes.toString().padStart(2, '0')} ${ampm}`;
-            slots.push(formattedTime);
-        }
-        return slots;
+    for (let time = startTime; time <= endTime; time += increment) {
+        const hours = Math.floor(time / 60);
+        const minutes = time % 60;
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        const formattedHours = hours > 12 ? hours - 12 : (hours === 0 ? 12 : hours);
+        const formattedTime = `${formattedHours}:${minutes.toString().padStart(2, '0')} ${ampm}`;
+        slots.push(formattedTime);
     }
+    return slots;
+}
 
     // Initialize available dates and time slots
     const availableDates = generateAvailableDates();
