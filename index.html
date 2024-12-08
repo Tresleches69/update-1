@@ -498,7 +498,7 @@ nav {
         <div class="hero-content">
             <h1>Welcome to Mason's Barber Shop</h1>
             <p>Professional haircuts and grooming services for the modern gentleman</p>
-           <a href="https://your-square-appointments-link" class="cta-button" target="_blank">Book Appointment</a>
+           <button class="cta-button" onclick="showBooking()">Book Appointment</button>
         </div>
     </section>
     <div id="serviceModal" class="modal">
@@ -750,7 +750,7 @@ const serviceData = [
 
     function initializeSquareBooking() {
         const script = document.createElement('script');
-        script.src = 'https://app.squareup.com/appointments/book/xmzpfaxw6ri5u1/LYTK0TY4TZ3VK/start';
+        <script src="https://square.site/appointments/buyer/widget/xmzpfaxw6ri5u1/LYTK0TY4TZ3VK.js";
         script.onload = function() {
             squareInitialized = true;
             SquareAppointmentsFloatingButton.openBookingWidget({
