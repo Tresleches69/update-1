@@ -694,162 +694,163 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Modal and Service Cards
-            const serviceCards = document.querySelectorAll('.service-card');
-            const modal = document.getElementById('serviceModal');
-            const closeBtn = document.querySelector('.close-button');
-            const serviceTitle = document.getElementById('serviceTitle');
-            const serviceDescription = document.getElementById('serviceDescription');
-            const servicePrice = document.getElementById('servicePrice');
-            const carouselImages = document.getElementById('carouselImages');
-            const prevImage = document.getElementById('prevImage');
-            const nextImage = document.getElementById('nextImage');
-            const form = document.querySelector('.contact-form');
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('Thank you for your message! We will get back to you soon.');
-        form.reset();
-    });
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelectorAll('.nav-links');
-    
-    mobileMenuBtn.addEventListener('click', () => {
-        navLinks.forEach(nav => nav.classList.toggle('active'));
-    });
-
-    // Close menu when clicking a link
-    navLinks.forEach(nav => {
-        nav.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.forEach(nav => nav.classList.remove('active'));
-            });
+    document.addEventListener('DOMContentLoaded', function() {
+        // Modal and Service Cards
+        const serviceCards = document.querySelectorAll('.service-card');
+        const modal = document.getElementById('serviceModal');
+        const closeBtn = document.querySelector('.close-button');
+        const serviceTitle = document.getElementById('serviceTitle');
+        const serviceDescription = document.getElementById('serviceDescription');
+        const servicePrice = document.getElementById('servicePrice');
+        const carouselImages = document.getElementById('carouselImages');
+        const prevImage = document.getElementById('prevImage');
+        const nextImage = document.getElementById('nextImage');
+        
+        // Form handling
+        const form = document.querySelector('.contact-form');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            form.reset();
         });
-    });
-});
 
-            let currentImageIndex = 0;
-            let images = [];
+        // Mobile menu
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelectorAll('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.forEach(nav => nav.classList.toggle('active'));
+        });
 
-            // Service Data
-            const serviceData = [
-                {
-                    title: 'Haircut',
-                    description: 'Classic and modern haircuts tailored to your style.',
-                    price: '$25',
-                    images: [
-                        './images/haircut1.jpg',
-                        './images/haircut2.jpg',
-                        './images/haircut3.jpg'
-                    ]
-                },
-                {
-                    title: 'Clean Shave',
-                    description: 'Traditional hot towel straight razor shave.',
-                    price: '$20',
-                    images: [
-                        './images/shave1.jpg',
-                        './images/shave2.jpg',
-                        './images/shave3.jpg'
-                    ]
-                },
-                {
-                    title: 'Beard Trim',
-                    description: 'Professional beard grooming and styling.',
-                    price: '$15',
-                    images: [
-                        './images/beard1.jpg',
-                        './images/beard2.jpg',
-                        './images/beard3.jpg'
-                    ]
-                }
-            ];
-
-            // Open Modal for each service card
-            serviceCards.forEach((card, index) => {
-                card.addEventListener('click', () => {
-                    const service = serviceData[index];
-                    serviceTitle.textContent = service.title;
-                    serviceDescription.textContent = service.description;
-                    servicePrice.textContent = `Price: ${service.price}`;
-
-                    // Clear previous images in the carousel
-                    carouselImages.innerHTML = '';
-                    images = service.images;
-                    currentImageIndex = 0;
-
-                    // Add images to the carousel
-                    images.forEach(imgSrc => {
-                        const img = document.createElement('img');
-                        img.src = imgSrc;
-                        carouselImages.appendChild(img);
-                    });
-
-                    // Show modal
-                    modal.style.display = 'flex';
+        // Close menu when clicking a link
+        navLinks.forEach(nav => {
+            nav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.forEach(nav => nav.classList.remove('active'));
                 });
             });
+        });
 
-            // Close Modal
-            closeBtn.addEventListener('click', () => {
+        let currentImageIndex = 0;
+        let images = [];
+
+        // Service Data
+        const serviceData = [
+            {
+                title: 'Haircut',
+                description: 'Classic and modern haircuts tailored to your style.',
+                price: '$25',
+                images: [
+                    './images/haircut1.jpg',
+                    './images/haircut2.jpg',
+                    './images/haircut3.jpg'
+                ]
+            },
+            {
+                title: 'Clean Shave',
+                description: 'Traditional hot towel straight razor shave.',
+                price: '$20',
+                images: [
+                    './images/shave1.jpg',
+                    './images/shave2.jpg',
+                    './images/shave3.jpg'
+                ]
+            },
+            {
+                title: 'Beard Trim',
+                description: 'Professional beard grooming and styling.',
+                price: '$15',
+                images: [
+                    './images/beard1.jpg',
+                    './images/beard2.jpg',
+                    './images/beard3.jpg'
+                ]
+            }
+        ];
+
+        // Open Modal for each service card
+        serviceCards.forEach((card, index) => {
+            card.addEventListener('click', () => {
+                const service = serviceData[index];
+                serviceTitle.textContent = service.title;
+                serviceDescription.textContent = service.description;
+                servicePrice.textContent = `Price: ${service.price}`;
+
+                // Clear previous images in the carousel
+                carouselImages.innerHTML = '';
+                images = service.images;
+                currentImageIndex = 0;
+
+                // Add images to the carousel
+                images.forEach(imgSrc => {
+                    const img = document.createElement('img');
+                    img.src = imgSrc;
+                    carouselImages.appendChild(img);
+                });
+
+                // Show modal
+                modal.style.display = 'flex';
+            });
+        });
+
+        // Close Modal
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
                 modal.style.display = 'none';
-            });
-
-            window.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.style.display = 'none';
-                }
-            });
-
-            // Carousel Navigation
-            prevImage.addEventListener('click', () => {
-                if (currentImageIndex > 0) {
-                    currentImageIndex--;
-                    updateCarousel();
-                }
-            });
-
-            nextImage.addEventListener('click', () => {
-                if (currentImageIndex < images.length - 1) {
-                    currentImageIndex++;
-                    updateCarousel();
-                }
-            });
-
-            function updateCarousel() {
-                const imgElements = carouselImages.getElementsByTagName('img');
-                Array.from(imgElements).forEach((img, index) => {
-                    img.style.transform = `translateX(-${currentImageIndex * 100}%)`;
-                });
             }
         });
 
+        // Carousel Navigation
+        prevImage.addEventListener('click', () => {
+            if (currentImageIndex > 0) {
+                currentImageIndex--;
+                updateCarousel();
+            }
         });
 
-        let squareInitialized = false;
-
-        function showBooking() {
-            document.getElementById('square-booking-container').style.display = 'block';
-            if (!squareInitialized) {
-                initializeSquareBooking();
+        nextImage.addEventListener('click', () => {
+            if (currentImageIndex < images.length - 1) {
+                currentImageIndex++;
+                updateCarousel();
             }
-        }
+        });
 
-        function closeBooking() {
-            document.getElementById('square-booking-container').style.display = 'none';
+        function updateCarousel() {
+            const imgElements = carouselImages.getElementsByTagName('img');
+            Array.from(imgElements).forEach((img, index) => {
+                img.style.transform = `translateX(-${currentImageIndex * 100}%)`;
+            });
         }
+    });
 
-        function initializeSquareBooking() {
-            const script = document.createElement('script');
-            script.src = "https://app.squareup.com/appointments/book/xmzpfaxw6ri5u1/LYTK0TY4TZ3VK/start";
-            script.onload = function() {
-                squareInitialized = true;
-                SquareAppointmentsFloatingButton.openBookingWidget({
-                    element: document.getElementById('square-booking')
-                });
-            };
-            document.body.appendChild(script);
+    let squareInitialized = false;
+
+    function showBooking() {
+        document.getElementById('square-booking-container').style.display = 'block';
+        if (!squareInitialized) {
+            initializeSquareBooking();
         }
-    </script>
+    }
+
+    function closeBooking() {
+        document.getElementById('square-booking-container').style.display = 'none';
+    }
+
+    function initializeSquareBooking() {
+        const script = document.createElement('script');
+        script.src = "https://app.squareup.com/appointments/book/xmzpfaxw6ri5u1/LYTK0TY4TZ3VK/start";
+        script.onload = function() {
+            squareInitialized = true;
+            SquareAppointmentsFloatingButton.openBookingWidget({
+                element: document.getElementById('square-booking')
+            });
+        };
+        document.body.appendChild(script);
+    }
+</script>
 </body>
 </html>
