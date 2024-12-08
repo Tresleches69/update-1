@@ -480,7 +480,6 @@
             for (let time = startTime; time <= endTime; time += increment) {
                 const hours = Math.floor(time / 60);
                 const minutes = time % 60;
-                const ampm = hours >= 12 ? 'PM' :
                 const ampm = hours >= 12 ? 'PM' : 'AM';
                 const formattedHours = hours > 12 ? hours - 12 : (hours === 0 ? 12 : hours);
                 const formattedTime = `${formattedHours}:${minutes.toString().padStart(2, '0')} ${ampm}`;
