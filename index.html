@@ -99,7 +99,7 @@
                 order: -1;
             }
         }
-        /* Mobile Menu Button */
+  /* Mobile Menu Button */
 .mobile-menu-btn {
     display: none;
 }
@@ -130,6 +130,13 @@
         gap: 1rem;
     }
 
+    .left-links,
+    .right-links {
+        justify-content: center; /* Center all links */
+        flex: none; /* Remove the flex property */
+        width: 100%; /* Make links full width */
+    }
+
     .nav-links.active {
         display: flex;
     }
@@ -137,7 +144,10 @@
     .nav-links a {
         font-size: 1.1rem;
         padding: 0.5rem 0;
+        width: 100%; /* Make links full width */
+        text-align: center; /* Center the text */
     }
+}
 
     /* Improve touch targets */
     .nav-links a,
