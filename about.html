@@ -79,48 +79,47 @@
 
         /* Image Carousel */
         .carousel-container {
-    width: calc(300px * 3 + 40px); /* Width of 3 images plus gaps */
-    overflow: hidden;
-    position: relative;
-    margin: 2rem auto;
-    padding: 0 20px;
-}
+            width: 960px; /* Exactly 3 images (300px * 3) plus gaps (30px * 2) */
+            overflow: hidden;
+            position: relative;
+            margin: 2rem auto;
+        }
 
-.carousel {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    gap: 20px;
-}
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            gap: 30px;
+        }
 
-.carousel-image {
-    min-width: 300px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    flex-shrink: 0;
-}
+        .carousel-image {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
 
         .carousel-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 2rem;
-}
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
 
-.carousel-button {
-    background: #f5f5f5;
-    color: #333;
-    border: 1px solid #ddd;
-    padding: 0.8rem 1.5rem;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    font-weight: 500;
-}
+        .carousel-button {
+            background: #f5f5f5;
+            color: #333;
+            border: 1px solid #ddd;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
 
-.carousel-button:hover {
-    background: #e0e0e0;
-}
+        .carousel-button:hover {
+            background: #e0e0e0;
+        }
 
         /* Footer */
         footer {
@@ -129,6 +128,14 @@
             text-align: center;
             padding: 2rem;
             margin-top: 4rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 1000px) {
+            .carousel-container {
+                width: calc(100% - 40px);
+                margin: 2rem 20px;
+            }
         }
     </style>
 </head>
@@ -158,63 +165,60 @@
             <p>Today, Mason's Barber Shop stands as a testament to the enduring value of quality service, attention to detail, and genuine community connection. We're proud to be your neighborhood barber shop, and we look forward to continuing our tradition of excellence for generations to come.</p>
         </div>
 
-       <div class="carousel-container">
-    <div class="carousel">
-        <img src="./images/carousel1.jpg" alt="Barber Shop Image 1" class="carousel-image">
-        <img src="./images/carousel2.jpg" alt="Barber Shop Image 2" class="carousel-image">
-        <img src="./images/carousel3.jpg" alt="Barber Shop Image 3" class="carousel-image">
-        <img src="./images/carousel4.jpg" alt="Barber Shop Image 4" class="carousel-image">
-        <img src="./images/carousel5.jpg" alt="Barber Shop Image 5" class="carousel-image">
-        <img src="./images/carousel6.jpg" alt="Barber Shop Image 6" class="carousel-image">
-        <img src="./images/carousel7.jpg" alt="Barber Shop Image 7" class="carousel-image">
-        <img src="./images/carousel8.jpg" alt="Barber Shop Image 8" class="carousel-image">
-    </div>
-</div>
-<div class="carousel-buttons">
-    <button class="carousel-button" onclick="moveCarousel(-1)">Previous</button>
-    <button class="carousel-button" onclick="moveCarousel(1)">Next</button>
-</div>
+        <div class="carousel-container">
+            <div class="carousel">
+                <img src="./images/carousel1.jpg" alt="Barber Shop Image 1" class="carousel-image">
+                <img src="./images/carousel2.jpg" alt="Barber Shop Image 2" class="carousel-image">
+                <img src="./images/carousel3.jpg" alt="Barber Shop Image 3" class="carousel-image">
+                <img src="./images/carousel4.jpg" alt="Barber Shop Image 4" class="carousel-image">
+                <img src="./images/carousel5.jpg" alt="Barber Shop Image 5" class="carousel-image">
+                <img src="./images/carousel6.jpg" alt="Barber Shop Image 6" class="carousel-image">
+                <img src="./images/carousel7.jpg" alt="Barber Shop Image 7" class="carousel-image">
+                <img src="./images/carousel8.jpg" alt="Barber Shop Image 8" class="carousel-image">
+            </div>
+        </div>
+        <div class="carousel-buttons">
+            <button class="carousel-button" onclick="moveCarousel(-1)">Previous</button>
+            <button class="carousel-button" onclick="moveCarousel(1)">Next</button>
+        </div>
     </section>
 
-        <footer>
+    <footer>
         <p>&copy; 2024 Mason's Barber Shop. All rights reserved.</p>
     </footer>
 
-  <script>
-    let currentPosition = 0;
-    const carousel = document.querySelector('.carousel');
-    const images = document.querySelectorAll('.carousel-image');
-    const imageWidth = 320; // Image width + gap
-    const totalImages = images.length;
-    const visibleImages = 3; // Number of images visible at once
+    <script>
+        let currentIndex = 0;
+        const carousel = document.querySelector('.carousel');
+        const images = document.querySelectorAll('.carousel-image');
+        const totalImages = images.length;
+        const imagesShown = 3;
 
-    function moveCarousel(direction) {
-        currentPosition += direction * imageWidth;
-        let maxScroll = -(totalImages - visibleImages) * imageWidth;
+        function moveCarousel(direction) {
+            // Update current index
+            currentIndex += direction;
+            
+            // Handle looping
+            if (currentIndex > totalImages - imagesShown) {
+                currentIndex = 0;
+            }
+            if (currentIndex < 0) {
+                currentIndex = totalImages - imagesShown;
+            }
 
-        // Forward loop (Next button)
-        if (currentPosition <= maxScroll) {
-            // When we reach the end (showing 6,7,8), next click should show 7,8,1
-            currentPosition = -((totalImages - visibleImages - 1) * imageWidth);
+            // Calculate position to move
+            const moveAmount = -(currentIndex * (300 + 30)); // image width + gap
+            carousel.style.transform = `translateX(${moveAmount}px)`;
         }
-        
-        // Backward loop (Previous button)
-        if (currentPosition > 0) {
-            // When we're at the start (showing 1,2,3), previous click should show 8,1,2
-            currentPosition = maxScroll + imageWidth;
-        }
 
-        carousel.style.transform = `translateX(${currentPosition}px)`;
-    }
+        // Auto-scroll
+        let autoScrollInterval = setInterval(() => moveCarousel(1), 5000);
 
-    // Auto-scroll
-    let autoScrollInterval = setInterval(() => moveCarousel(1), 5000);
-
-    // Pause auto-scroll when hovering
-    carousel.addEventListener('mouseenter', () => clearInterval(autoScrollInterval));
-    carousel.addEventListener('mouseleave', () => {
-        autoScrollInterval = setInterval(() => moveCarousel(1), 5000);
-    });
-</script>
+        // Pause auto-scroll when hovering
+        carousel.addEventListener('mouseenter', () => clearInterval(autoScrollInterval));
+        carousel.addEventListener('mouseleave', () => {
+            autoScrollInterval = setInterval(() => moveCarousel(1), 5000);
+        });
+    </script>
 </body>
 </html>
